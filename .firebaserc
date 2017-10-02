@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "invento-7d49c"
+    "default": "invento-7d49c",
+    "staging": "invento-7d49c"
   }
 }

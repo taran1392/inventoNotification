@@ -1,10 +1,12 @@
 const functions = require('firebase-functions');
-var nodemailer = require('nodemailer');
 var path=require("path");
 var admin = require("firebase-admin");
 
+var Mmailer=require(path.join(__dirname,"mailer.js"))
 //var serviceAccount = require("/serviceAccount.json");
 var serviceAccount = require(path.join(__dirname,"serviceAccount.json"));
+
+
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -17,6 +19,12 @@ exports.notifyforNewOrder = functions.database.ref('/articles/{articleId}')
 
             console.log("Article Changed..");
             console.log(event.data);
+
+            Mmailer.sendMail("taran1392@gmail.com","INevnto mail Notification",JSON.stringify(event.data)).then(d=>{}).catch(err=>{
+
+
+            });
+
 
 });
 
